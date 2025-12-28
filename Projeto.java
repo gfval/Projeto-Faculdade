@@ -38,7 +38,8 @@ projeto-vendas/
 
 ## pom.xml
 
-```xml
+```
+xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -586,12 +587,8 @@ ClienteRepositoryInMemory ..|> IRepository
 ProdutoRepositoryInMemory ..|> IRepository
 PedidoRepositoryInMemory ..|> IRepository
 @enduml
-```
 
-> Observação: cole o código PlantUML em https://www.plantuml.com/plantuml para gerar a imagem do diagrama.
-
----
-
+'''
 ## Observações de projeto e princípios aplicados
 
 - **Identificação de entidades**: `Cliente`, `Produto`, `Pedido`, `PedidoItem` — cada uma modelando conceitos do domínio de vendas.
@@ -615,20 +612,5 @@ java -cp target/projeto-vendas-1.0-SNAPSHOT.jar com.example.vendas.app.Main
 ```
 
 (Como alternativa, importe o projeto num IDE como IntelliJ ou VS Code e execute `Main`.)
+'''
 
----
-
-## Próximos passos sugeridos
-- Substituir repositórios in-memory por JPA + banco relacional (PostgreSQL) para produção.
-- Criar camada REST usando Spring Boot para expor APIs.
-- Adicionar validações mais robustas e tratamento de exceções centralizado.
-- Implementar autenticação/autorização se necessário.
-
----
-
-Se quiser, eu posso:
-- Gerar o repositório Maven (zip) pronto para download; ou
-- Converter o exemplo para usar Spring Boot e JPA; ou
-- Gerar a imagem PNG do diagrama UML.
-
-Diga qual desses você prefere e eu gero para você em seguida.
