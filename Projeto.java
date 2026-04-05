@@ -38,8 +38,7 @@ projeto-vendas/
 
 ## pom.xml
 
-```
-xml
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -177,6 +176,7 @@ public class PedidoItem {
     private final int quantidade;
 
     public PedidoItem(Produto produto, int quantidade) {
+        if (produto == null) throw new IllegalArgumentException("Produto não pode ser nulo");
         if (quantidade <= 0) throw new IllegalArgumentException("Quantidade deve ser > 0");
         this.produto = produto;
         this.quantidade = quantidade;
@@ -406,7 +406,7 @@ public class ProdutoService {
     public ProdutoService(IRepository<Produto, String> produtoRepo) { this.produtoRepo = produtoRepo; }
 
     public Produto criarProduto(Produto p) {
-        if (p.getPreco() < 0) throw new IllegalArgumentException("Preço inválido");
+        if (p.getPreco() <= 0) throw new IllegalArgumentException("Preço inválido");
         return produtoRepo.save(p);
     }
 
@@ -587,8 +587,10 @@ ClienteRepositoryInMemory ..|> IRepository
 ProdutoRepositoryInMemory ..|> IRepository
 PedidoRepositoryInMemory ..|> IRepository
 @enduml
+```
 
-'''
+---
+
 ## Observações de projeto e princípios aplicados
 
 - **Identificação de entidades**: `Cliente`, `Produto`, `Pedido`, `PedidoItem` — cada uma modelando conceitos do domínio de vendas.
@@ -612,5 +614,4 @@ java -cp target/projeto-vendas-1.0-SNAPSHOT.jar com.example.vendas.app.Main
 ```
 
 (Como alternativa, importe o projeto num IDE como IntelliJ ou VS Code e execute `Main`.)
-'''
 
